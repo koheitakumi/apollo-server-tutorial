@@ -40,7 +40,7 @@ const context = async ({ req }) => {
   } catch (err) {
     console.log("Error", err);
   }
-  return { req, user };
+  return { req };
 };
 
 const schema = makeExecutableSchema({ typeDefs, resolvers });
