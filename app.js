@@ -5,11 +5,12 @@ const { ApolloServer } = require("apollo-server-express");
 
 const { makeExecutableSchema } = require("graphql-tools");
 const typeDefs = require("./schema");
-let resolvers = require("./resolvers");
+let resolvers = require("./resolver");
 
 const GithubAPI = require("./datasources/githubApi");
 const PokemonAPI = require("./datasources/pokemonApi");
 const UserDB = require("./datasources/userDb");
+const Firestore = require("./datasources/firestore");
 
 const { createStore } = require("./store");
 
@@ -23,6 +24,7 @@ const dataSources = () => ({
   githubAPI: new GithubAPI(),
   pokemonAPI: new PokemonAPI(),
   userDB: new UserDB({ store }),
+  firestore: new Firestore({ store }),
 });
 
 // the function that sets up the global context for each resolver, using the req
@@ -46,7 +48,11 @@ const context = async ({ req }) => {
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 // In case of worker
-const server = new ApolloServer({ schema, dataSources, context });
+const server = new ApolloServer({
+  schema,
+  dataSources,
+  context,
+});
 
 const app = express();
 server.applyMiddleware({ app });

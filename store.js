@@ -2,8 +2,10 @@ require("dotenv").config();
 
 const { Model } = require("objection");
 const knex = require("knex");
+const admin = require("firebase-admin");
+const serviceAccount = require(process.env.FIREBASE_SECRET);
 
-module.exports.createStore = () => {
+const createPgDb = () => {
   const db = knex({
     client: "pg",
     connection: {
@@ -37,4 +39,19 @@ module.exports.createStore = () => {
   }
 
   return { db, User };
+};
+
+const createFirestoreAdmin = () => {
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: "https://file-translate.firebaseio.com",
+  });
+  const firestore = admin.firestore();
+  return { firestore };
+};
+
+module.exports.createStore = () => {
+  const { db, User } = createPgDb();
+  const { firestore } = createFirestoreAdmin();
+  return { db, User, firestore };
 };
