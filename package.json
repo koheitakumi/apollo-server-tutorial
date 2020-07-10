@@ -1,0 +1,33 @@
+{
+  "name": "apollo-tutorial",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node ./app.js",
+    "prod:start": "pm2 start pm2.config.js",
+    "prod:status": "pm2 status",
+    "prod:kill": "pm2 kill"
+  },
+  "dependencies": {
+    "apollo-datasource": "^0.7.2",
+    "apollo-datasource-rest": "^0.9.3",
+    "apollo-server-express": "^2.15.1",
+    "bcrypt": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "firebase": "^7.16.0",
+    "firebase-admin": "^8.13.0",
+    "graphql-tools": "^6.0.12",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.21.1",
+    "lodash": "^4.17.19",
+    "objection": "^2.2.1",
+    "pg": "^8.3.0",
+    "pm2": "^4.4.0"
+  },
+  "devDependencies": {
+    "cross-fetch": "^3.0.5",
+    "firebase-tools": "^8.5.0"
+  }
+}

@@ -1,0 +1,27 @@
+const { gql } = require("apollo-server-express");
+
+module.exports = gql`
+  type Pokemon {
+    id: ID!
+    name: String
+    base_experience: Int
+    height: Int
+    weight: Int
+    order: Int
+    types: [Type]
+  }
+
+  type Type {
+    slot: ID!
+    type: EachType!
+  }
+
+  type EachType {
+    name: String!
+    url: String!
+  }
+
+  type Query {
+    pokemon(pokemonNo: Int!): Pokemon
+  }
+`;
