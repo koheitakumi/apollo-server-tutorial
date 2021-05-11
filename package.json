@@ -27,7 +27,7 @@
     "graphql-tools": "^6.0.12",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.1",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "objection": "^2.2.1",
     "pg": "^8.3.0",
     "pm2": "^4.4.0"
