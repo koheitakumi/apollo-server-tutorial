@@ -26,7 +26,7 @@
     "firebase-admin": "^8.13.0",
     "graphql-tools": "^6.0.12",
     "jsonwebtoken": "^8.5.1",
-    "knex": "^0.21.1",
+    "knex": "^2.4.0",
     "lodash": "^4.17.19",
     "objection": "^2.2.1",
     "pg": "^8.3.0",
